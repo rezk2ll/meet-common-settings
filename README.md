@@ -66,3 +66,4 @@ npm test                  # both
 - [docs/architecture.md](docs/architecture.md) — what the service does, message flow, design rationale.
 - [docs/operations.md](docs/operations.md) — provisioning dependencies, monitoring, alerting, troubleshooting.
 - [docs/development.md](docs/development.md) — local setup, tests, releasing.
+- [docs/running-locally.md](docs/running-locally.md) — end-to-end smoke test against Docker postgres + rabbitmq.
