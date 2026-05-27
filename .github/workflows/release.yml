@@ -1,0 +1,36 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v[0-9]+.[0-9]+.[0-9]+*'
+
+jobs:
+  test:
+    name: Build and Test
+    uses: ./.github/workflows/build.yml
+    secrets: inherit
+
+  publish:
+    needs: [test]
+    permissions:
+      contents: read
+      packages: write
+    name: Publish tagged release
+    uses: ./.github/workflows/publish-release.yml
+    secrets: inherit
+
+  release:
+    needs: [test]
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          generate_release_notes: true

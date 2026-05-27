@@ -1,0 +1,22 @@
+name: Publish latest image
+
+on:
+  workflow_call:
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Publish to GitHub Container Registry
+        uses: elgohr/Publish-Docker-Github-Action@v5
+        with:
+          name: linagora/meet-common-settings
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+          registry: ghcr.io
+          tags: "latest"

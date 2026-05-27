@@ -1,0 +1,16 @@
+name: Pull Request
+
+on:
+  pull_request:
+    branches: [main]
+  merge_group:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    name: Build and Test
+    uses: ./.github/workflows/build.yml
+    secrets: inherit
