@@ -61,6 +61,8 @@ npm run test:integration  # requires docker (testcontainers)
 npm test                  # both
 ```
 
-## Deployment
+## Further reading
 
-The Helm chart lives in [`helm-charts/meet-common-settings`](https://github.com/linagora/helm-charts).
+- [docs/architecture.md](docs/architecture.md) — what the service does, message flow, design rationale.
+- [docs/operations.md](docs/operations.md) — provisioning dependencies, monitoring, alerting, troubleshooting.
+- [docs/development.md](docs/development.md) — local setup, tests, releasing.
